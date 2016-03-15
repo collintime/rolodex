@@ -1,0 +1,101 @@
+<div class="form-wrapper">
+  <form class="margin-tb" name="vm.form" ng-model="vm.addressModel" ng-submit="vm.submit()" novalidate unsaved-warning-form>
+    <h4 class="margin-tb"><i class="fa fa-pencil"></i> Edit</h4>
+    <div class="form-group">
+      <input type="checkbox" ng-model="vm.addressModel.isDefault" />Set as default address
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <input id="businessNameEdit" class="form-control" type="text" ng-model="vm.addressModel.businessName" placeholder="Business Name" name="businessName" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="form-group">
+          <input id="firstNameEdit" class="form-control" type="text" ng-model="vm.addressModel.firstName" placeholder="First Name" name="firstName" required />
+          <div ng-messages="vm.form.firstName.$error" ng-if="(vm.form.$submitted || vm.form.firstName.$touched)">
+            <div ng-message="required" class="shiperror">enter first name</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form-group">
+          <input id="lastNameEdit" class="form-control" type="text" ng-model="vm.addressModel.lastName" placeholder="Last Name" name="lastName" required />
+          <div ng-messages="vm.form.lastName.$error" ng-if="(vm.form.$submitted || vm.form.lastName.$touched)">
+            <div ng-message="required" class="shiperror">enter last name</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <input id="streetAddress1Edit" class="form-control" type="text" ng-model="vm.addressModel.line1" placeholder="Street Address 1" name="line1" required />
+          <div ng-messages="vm.form.line1.$error" ng-if="(vm.form.$submitted || vm.form.line1.$touched)">
+            <div ng-message="required" class="addresserror">enter street address</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <input id="streetAddress2Edit" class="form-control" type="text" ng-model="vm.addressModel.line2" placeholder="Street Address 2" name="line2" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <input id="cityEdit" class="form-control" type="text" ng-model="vm.addressModel.city" placeholder="City" name="city" required />
+
+          <div ng-messages="vm.form.city.$error" ng-if="(vm.form.$submitted || vm.form.city.$touched)">
+            <div ng-message="required" class="shiperror">enter city</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="form-group">
+          <select name="state" id="stateSelect" class="form-control" ng-model="vm.addressModel.state" ng-options="state.value as state.text for state in vm.states" required>
+            <option value="">State</option>
+          </select>
+
+          <div ng-messages="vm.form.state.$error" ng-if="(vm.form.$submitted || vm.form.state.$touched)">
+            <div ng-message="required" class="shiperror">enter state</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="form-group">
+          <input id="zipEdit" class="form-control" type="text" ng-model="vm.addressModel.zip" placeholder="Zip Code" name="zip" required ng-pattern="vm.validation.zipCode" />
+          <div ng-messages="vm.form.zip.$error" ng-if="(vm.form.$submitted || vm.form.zip.$touched)">
+            <div ng-message="required" class="shiperror">enter zipcode</div>
+            <div ng-message="pattern" class="shiperror">invalid zipcode</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="form-group">
+          <input id="phoneEdit" class="form-control" type="text" ng-model="vm.addressModel.phone" placeholder="Phone Number" name="phone" ng-pattern="vm.validation.phoneNumber" required />
+          <div ng-messages="vm.form.phone.$error" ng-if="(vm.form.$submitted || vm.form.phone.$touched)">
+            <div ng-message="required" class="shiperror">enter phone number</div>
+            <div ng-message="pattern" class="shiperror">invalid phone number</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group text-center">
+          <button id="addressSubmitButton" class="col-xs-4 col-xs-offset-1 ship-button btn btn-standard" type="submit" /><i class="fa fa-floppy-o"></i> Save</button>
+          <button id="addressSubmitButton" class="col-xs-4 col-xs-offset-2 ship-button btn btn-default" type="button" ng-click="vm.cancel()" /><i class="fa fa-times"></i></i> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,42 @@
+<div class="address-static" ng-if="vm.address">
+  <div ng-if="!vm.editMode">
+    <div id="confirmDelete" class="delete-overlay" ng-if="vm.confirmRequired">
+      <div class="delete-wrapper">
+        <div>Are you sure you want to delete?</div>
+        <div class="button-wrapper">
+          <button class="btn btn-danger" ng-click="vm.deleteProceed()">Yes, Delete</button>
+          <button class="btn" ng-click="vm.deleteAbort()">No, Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div class="pull-right">
+      <button type="button" class="btn btn-link btn-info" ng-disabled="vm.editInProgress || vm.confirmRequired" ng-click="vm.toggleEditMode()" ng-if="vm.options.enableSave"><i class="fa fa-pencil-square-o font-18"></i></button>
+      <button type="button" class="btn btn-link btn-danger" ng-disabled="vm.editInProgress || vm.confirmRequired" ng-click="vm.delete()" ng-if="vm.options.enableDelete"><i class="fa fa-trash-o font-18"></i></button>
+    </div>
+    <div class="bold">
+      <span>{{vm.address.businessName}}</span>
+    </div>
+    <div>
+      <span>{{vm.address.firstName}}</span>
+      <span>{{vm.address.lastName}}</span>
+    </div>
+    <div>
+      <span>{{vm.address.line1}}</span>
+      <span>{{vm.address.line2}}</span>
+    </div>
+    <div>
+      <span>{{vm.address.city}},</span>
+      <span>{{vm.address.state}}</span>
+      <span>{{vm.address.zip}}</span>
+    </div>
+    <div>
+      <span>{{vm.address.phone}}</span>
+    </div>
+
+    <div class="ship-to-address-wrapper">
+      <div class="ship-to-link btn btn-link" ng-if="vm.options.enableSelect" ng-disabled="vm.editInProgress || vm.confirmRequired" class="margin-tb" ng-click="vm.shipTo()">Select this Address</div>
+    </div>
+
+  </div>
+  <ct-address-form address="vm.address" ng-if="vm.editMode" on-submit="vm.save(address)" on-cancel="vm.cancel()"></ct-address-form>
+</div>

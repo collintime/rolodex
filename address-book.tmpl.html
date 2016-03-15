@@ -1,0 +1,23 @@
+<div class="address-group-wrapper">
+  <div class="node-wrapper margin-tb">
+    <div>
+      <div class="new-address-wrapper">
+        <button ng-disabled="vm.editInProgress" ng-click="vm.toggleNewAddressForm()" class="btn btn-link" ng-if="vm.options.enableAdd && vm.addresses.length"><i class="fa fa-plus-square"></i> Add New Address</button>
+      </div>
+
+      <div ng-if="vm.newAddressFormVisible">
+        <ct-address-form on-submit="vm.add(address)" on-cancel="vm.cancel()"></ct-address-form>
+      </div>
+    </div>
+
+    <ct-address-tile ng-repeat="address in vm.addresses" 
+        options="vm.options" 
+        address="address" 
+        edit-in-progress="vm.editInProgress" 
+        on-save="vm.save(address)" 
+        on-cancel="vm.cancel()" 
+        on-delete="vm.delete(address)" 
+        on-ship-to="vm.shipTo(address)">
+    </ct-address-tile>
+  </div>
+</div>
